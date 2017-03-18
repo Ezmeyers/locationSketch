@@ -1,0 +1,197 @@
+<!doctype html>
+<html class="no-js" lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!--TITLE-->
+    <title>Save a sketch</title>
+    <!--css includes-->
+    <link rel="stylesheet" href="css/app.css" />
+    <link rel="stylesheet" href="css/foundation.css" />
+    <script src="js/vendor/modernizr.js"></script>
+    <link href='http://cdnjs.cloudflare.com/ajax/libs/foundicons/3.0.0/foundation-icons.css' rel='stylesheet' type='text/css'>
+</head>
+<body>
+
+<!--OFF CANVAS SIDE BAR-->
+<!--MOUNTAIN OF DIVSSSSSS-->
+<div class="off-canvas-wrapper" id="canvas">
+    <!--Off CANVAS INNER WRAPPER-->
+    <div class="off-canvas-wrapper-inner" data-off-canvas-wrapper>
+        <!--OFF CANVAS PANEL-->
+        <div class="off-canvas position-left" id="offCanvas" data-off-canvas>
+
+            <button class="close-button" aria-label="Close menu" type="button" data-close></button>
+            <!-- Menu -->
+            <ul class="vertical menu">
+                <!--home button icon-->
+                <li><a href="index.html" id="goHome" class="fi-home"></a></li>
+                <!--create sketch icon-->
+                <li><a href="#" id="logout">Logout</a></li>
+                <!--login icon-->
+                <li><a href="#" id="login" data-open="myLogin">Login</a></li>
+                <!--Register icon-->
+                <li><a href="#" id="sign" data-open="mySignup">Register</a></li>
+            </ul>
+        </div><!--end off canvas content-->
+
+
+        <div class="off-canvas-content" data-off-canvas-content>
+            <!--content-->
+            <div id="row"><div class="small-4">
+            <button type="button" id="buttonOpen" class="button" data-toggle="offCanvas">
+                <i class="fi-list" data-toggle="offCanvas"></i>
+            </button>
+            <!--tabs-->
+            <ul class="tabs" data-tabs id="example-tabs">
+                <li class="tabs-title is-active"><a href="#panel1" aria-selected="true">Map</a></li>
+                <li class="tabs-title"><a href="#panel2">Sketch</a></li>
+                <div class="panel4"><li class="tabs-title"><a href="#panel4">Past Sketches</a></li></div>
+                <div class="panel3"><li class="tabs-title"><a href="#panel3">Profile</a></li></div>
+            </ul>
+            </div><!--END SMALL-->
+
+            <div class="tabs-content" data-tabs-content="example-tabs">
+                <div class="tabs-panel is-active" id="panel1">
+                    <!--tabs-panel 1 content-->
+                    <h4 id="welcomeLocation"><ul>Your location</ul></h4>
+                        <div id="map"></div>
+                </div><!--tabs panel 1 end-->
+
+                <div class="tabs-panel" id="panel2">
+                    <h4 id="welcomeSketch">woohoo, Sketches</h4>
+                    <div id="sketchWidget">
+                        <!--tabs-panel 2 content-->
+                        <canvas id="sketchpad" height="300"></canvas>
+                                <input id="colorpicker" type="color" />
+                                <input id="sizepicker" type="range" max="15" min="3" value="5" />
+                                <button class="button" id="btnSave">Save Sketch</button>
+                        <div id="defaultDrawingFeedback">Please Login or register to start saving sketches</div>
+                        </div><!--end sketch widget-->
+                    </div><!--tab panel 2 end-->
+                <!--Tabs panel 3-->
+                <div class="tabs-panel" id="panel3">
+                </div><!--END TAB 3-->
+                <!--tabs panel 4-->
+                <div class="tabs-panel" id="panel4">
+                <div id="drawingBrowser">
+                    <div id="drawingListing"></div>
+                    <div id="drawingShowcase"></div>
+                </div>
+                    </div><!--END TABS 4-->
+
+                </div><!--tabs-content end-->
+            </div><!--END ROW-->
+            </div><!--END OFF CANVAS PANEL-->
+            </div><!--end off-canvas INNER WRAPPER-->
+        </div><!--END OFF CANVAS WRAPPER-->
+
+    <div class="reveal" id="myLogin" data-reveal>
+            <h2>Login</h2>
+        <div id="feedback2"></div>
+        <!--Additionally Displays username when they reach this page from signing up-->
+            <div id="welcomeContent">
+                <p><small>Please log in to save and view your sketches</small></p><br>
+            </div>
+        <form>
+                <div class="row">
+                    <div class="small-8">
+                        <div class="row">
+                            <div class="small-3 columns">
+                                <label class="right">Username:</label>
+                            </div>
+                            <div class="small-9 columns">
+                                <!--grabs User login-->
+                                <input type="text" id="logUser" placeholder="username">
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="small-3 columns">
+                                <label class="right">Email:</label>
+                            </div>
+                            <div class="small-9 columns">
+                                <!--grabs email login-->
+                                <input type="text" id="logEmail" placeholder="@gmail.com">
+                            </div>
+                        </div>
+
+                        <button id="logMeIn" class="button">Login<br /></button><br>
+                    </div>
+                    <div id="feedback3"></div>
+                </div>
+            </form>
+            <!--closing button-->
+            <button class="close-button" data-close aria-label="Close modal" type="button">
+                <span aria-hidden="true">&times;</span>
+            </button>
+
+        </div>
+
+
+        <!--Sign up Page-->
+        <div class="reveal" id="mySignup" data-reveal>
+            <h2>Sign Up</h2>
+            <p><small>Please register below.</small></p><br>
+            <div class="row" id="addUser">
+                <div class="small-8">
+                    <div class="row">
+                        <div class="small-4 columns">
+                            <label class="right">First Name:</label></div>
+                        <div class="small-8 columns">
+                            <!--gets first name-->
+                            <input type="text" class="signFirst" placeholder="first">
+                        </div>
+                        <div class="small-4 columns">
+                            <label class="right">Last Name:</label>
+                        </div>
+                        <div class="small-8 columns">
+                            <!--gets last name-->
+                            <input type="text" class="signLast" placeholder="last">
+                        </div>
+
+                        <div class="small-4 columns">
+                            <label class="right">Username:</label>
+                        </div>
+                        <div class="small-8 columns">
+                            <!--gets user name-->
+                            <input type="text" class="signUser" placeholder="coolcat99">
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="small-4 columns">
+                            <label class="right">Email:</label>
+                        </div>
+                        <div class="small-8 columns">
+                            <!--gets email-->
+                            <input type="text" class="signEmail" placeholder="@gmail.com">
+                            <div id="feedback"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--Register Button-->
+            <button class="button" id="register">Register Me<br /></button><br>
+            <!--Close popup Button-->
+            <button class="close-button" data-close aria-label="Close modal" type="button">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+
+<!--JS INCLUDES-->
+<script src="js/vendor/jquery.min.js"></script>
+<script src="js/vendor/what-input.min.js"></script>
+<script src="js/foundation.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/foundation/6.2.1/plugins/foundation.offcanvas.js"></script>
+<script src="https://npmcdn.com/dexie/dist/dexie.min.js"></script>
+
+<script src="js/sketch.js"></script>
+<script src="js/app.js"></script>
+<script src="js/index.js"></script>
+<!--map with callback to initialize-->
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCLxiOLUhpoQMLDPcXDs8n3nVyAZy8bmrc
+&callback=initMap" async defer></script>
+</body>
+</html>
